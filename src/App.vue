@@ -1,4 +1,3 @@
-app..vue
 <template lang='pug'>
 div
   Main-header
