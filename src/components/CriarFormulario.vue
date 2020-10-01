@@ -1,20 +1,20 @@
 <template lang="pug">
-div
-  .container
-    .component
-      el-row
-        Divider(label="Estrutura básica")
-        EstruturaBasica(:estrutura='estruturaBasica')
-      el-row
-        Divider(label="Personalização")
-        Personalizacao(:personalizacao='personalizacao')
-      el-row
-        Divider(label="Visualização")
-        Visualizacao
+.container
+  .component
+    el-row
+      Divider(label="Estrutura básica")
+      EstruturaBasica(:estrutura='form.estruturaBasica')
+    el-row
+      Divider(label="Personalização")
+      Personalizacao(:personalizacao='form.personalizacao')
+    el-row
+      Divider(label="Visualização")
+      Visualizacao
 
+    el-row
       .sair
         router-link(to="/")
-          el-button.buttonDefaultSystemSecundario(plain
+          el-button.buttonDefaultSystemSecundario(
             to="'/'"
           ) Sair
 
@@ -23,44 +23,40 @@ div
 <script>
 import EstruturaBasica from '@/components/EstruturaBasica'
 import Personalizacao from '@/components/Personalizacao'
-import Button from '@/components/Button'
 import Divider from '@/components/Divider'
 import Alert from '../utils/Alert'
 import Visualizacao from '@/components/Visualizacao'
+import ValidateForm from '../utils/validatorForm'
 
 export default {
 
   components: {
     EstruturaBasica,
     Personalizacao,
-    Button,
     Divider,
-    Visualizacao
+    Visualizacao,
+    ValidateForm
   },
 
   data () {
     return {
-      step: 0,
-      activeStep: '',
-      active: 0,
-      steps: [{code: 'EST_BASIC', nome: 'Estrutura básica', id:0}, {code: 'PERSONALIZA', nome: 'Personalização', id: 1}, {code: 'VISUALIZAR', nome: 'Visualizar', id: 2}],
-      estruturaBasica: {
-        qntButtons: null,
-        input:  null,
-        button: null,
-        hasTelefone: null,
-        campos: [],
-        botaoPrimario: {nome: null, acao: null},
-        botaoSecundario: {nome: null, acao: null},
-        botaoTerciario: {nome: null, acao: null},
-        hasBotaoPrimario: null,
-        hasBotaoSecundario: null
-      },
-      personalizacao: {
-        corLabels: null,
-        corPlaceholders: null,
-        fontSizePrimary: null,
-        fontSizeSecundary: null
+      form: {
+        estruturaBasica: {
+          button: null,
+          hasTelefone: null,
+          campos: [],
+          nomeCampo: null,
+          estrutura: null,
+          botaoPrimario: {nome: null, acao: null},
+          botaoSecundario: {nome: null, acao: null},
+          botaoTerciario: {nome: null, acao: null}
+        },
+        personalizacao: {
+          corLabels: null,
+          corPlaceholders: null,
+          fontSizePrimary: null,
+          fontSizeSecundary: null
+        }
       }
     }
   },
@@ -90,6 +86,9 @@ export default {
     },
     isValid() {
       return false;
+    },
+    validarAndGerarFormulario() {
+      ValidateForm.validarFormulario(this.form);
     }
   }
 };

@@ -1,17 +1,5 @@
 const pictures = [
     {
-      nome: 'Natureza',
-      url: 'https://wallpapercave.com/wp/u9AVLry.jpg'
-    },
-    {
-      nome:'Criatividade',
-      url: 'https://liziamedina.com.br/wp-content/uploads/2016/06/t%C3%A9cnicas-de-estudo.jpg'
-    },
-    {
-      nome:'Feedback',
-      url: 'https://blog.edesk.com/resources/wp-content/uploads/2018/12/4-creative-ways-to-ultilize-negative-feedback-min.jpg'
-    },
-    {
       nome:'Estudos',
       url: 'https://www.meucantinhodeestudos.com.br/assets/images/2020/home-banner-compacto-1100w.png'
     },
@@ -24,8 +12,16 @@ const pictures = [
       url: 'https://media-manager.noticiasaominuto.com/1920/naom_5caee2ff2dabd.jpg'
     },
     {
-      nome:'Viagem',
-      url: 'https://www.abear.com.br/wp-content/uploads/2019/11/ABEAR-Responde_Calor.jpg'
+      nome: 'Natureza',
+      url: 'https://wallpapercave.com/wp/u9AVLry.jpg'
+    },
+    {
+      nome:'Criatividade',
+      url: 'https://liziamedina.com.br/wp-content/uploads/2016/06/t%C3%A9cnicas-de-estudo.jpg'
+    },
+    {
+      nome:'Feedback',
+      url: 'https://blog.edesk.com/resources/wp-content/uploads/2018/12/4-creative-ways-to-ultilize-negative-feedback-min.jpg'
     }
   ]
 

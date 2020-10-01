@@ -52,14 +52,6 @@
   color: rgb(255, 255, 255) !important;
 }
 
-.el-carousel__item h3 {
-  color: #e7009a;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 200px;
-  margin: 0;
-}
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
@@ -71,4 +63,15 @@
 .center {
   display: flex;
   justify-content: center;
+}
+
+.blockClass {
+  color: blue !important;
+  background-color: rgb(0, 17, 255) !important;
+}
+
+.index{
+  background-color: blue !important;
+  z-index: 1000 !important;
+  position: absolute;
 }

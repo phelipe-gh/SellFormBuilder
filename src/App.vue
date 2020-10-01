@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   Main-header
-  flash-message(:position="'right top'")
+  flash-message.index(:position="'right top'")
   router-view
 </template>
 <script>

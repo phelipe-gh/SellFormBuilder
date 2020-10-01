@@ -23,6 +23,8 @@ import {
   Select,
   Tag,
   Carousel,
+  Form,
+  FormItem,
   CarouselItem,
   Radio,
   Image,
@@ -45,8 +47,10 @@ Vue.use(Option);
 Vue.use(InputNumber);
 Vue.use(Tag);
 Vue.use(Image);
+Vue.use(Form);
+Vue.use(FormItem);
 
-Vue.use(FlashMessage);
+Vue.use(FlashMessage, { time: 1000, wrapperClass: 'flash-wrapper', blockClass: 'blockClass' });
 
 Vue.component('ValidationProvider', ValidationProvider)
 

@@ -1,43 +1,36 @@
 <template lang='pug'>
-div
-
+el-form.demo-ruleForm(:model='estrutura' :rules='rules' ref='estrutura')
   el-row(type='flex', :gutter='40')
     el-col(:lg='12')
-      validation-provider(name="estrutura.campos", :rules="estrutura.campos.length > 0 ? '' : 'required'")
-        div(slot-scope='{ errors }')
-          label Campos:
-          el-input(
-            v-model='estrutura.input'
+      el-form-item(label='Campos:' prop='nomeCampo')
+        el-input(v-model='estrutura.nomeCampo')
+          el-button(
+            slot='append',
+            icon='el-icon-plus',
+            @click='addCampo()',
+            :disabled='estrutura.nomeCampo && estrutura.nomeCampo.length < 1'
           )
-            el-button(
-              slot='append',
-              icon='el-icon-plus',
-              @click='addCampo()',
-              :disabled='estrutura.input && estrutura.input.length < 1'
-            )
-          el-tag(
-            v-for='(campo, index) in estrutura.campos',
-            :key='index',
-            closable,
-            type='info',
-            size='medium',
-            @close='removeCampo(index)'
-          ) {{ campo.nome }}
-          p.alertText {{ errors[0] }}
+        el-tag(
+          v-for='(campo, index) in estrutura.campos',
+          :key='index',
+          closable,
+          type='info',
+          size='medium',
+          @close='removeCampo(index)'
+        ) {{ campo.nome }}
 
     el-col(:lg='8')
-      p Inserir campo telefone ?
-      el-radio-group(
-        v-model='estrutura.hasTelefone',
-        size='medium',
-        @change='setTelefone()'
-      )
-        el-radio(
-          :label='true'
-        ) Sim
-        el-radio(
-          :label='false'
-        ) Não
+      el-form-item.marginTop(label='Inserir campo telefone ?:' prop='hasTelefone')
+        el-radio-group(
+          v-model='estrutura.hasTelefone',
+          size='medium'
+        )
+          el-radio(
+            :label='true'
+          ) Sim
+          el-radio(
+            :label='false'
+          ) Não
 
   el-row(type='flex', :gutter='40')
     el-col(:lg='12')
@@ -135,18 +128,27 @@ export default {
 
   data () {
     return {
-      acoes: [{nome: 'Abrir link', id: 1}, {nome: 'Mostrar dados preenchidos', id: 2}]
-    }
+      nomeCampo: null,
+      acoes: [{nome: 'Abrir link', id: 1}, {nome: 'Mostrar dados preenchidos', id: 2}],
+      rules: {
+        nomeCampo: [
+          { required: true, message: 'Insira pelo menos um campo', trigger: 'blur' }
+        ],
+        hasTelefone: [
+          { required: true, message: 'Campo obrigatório', trigger: 'blur' }
+        ]
+      }
+    };
   },
 
   methods: {
     addCampo() {
       const campoAdded = {
         tipo: 'INPUT',
-        nome: this.estrutura.input
+        nome: this.estrutura.nomeCampo
       }
       this.estrutura.campos.push(campoAdded);
-      this.estrutura.input = null;
+      this.estrutura.nomeCampo = null;
     },
     removeCampo(index) {
       this.estrutura.campos.splice(index, 1);
@@ -164,4 +166,9 @@ export default {
 
 <style scoped lang='scss'>
 @import url('//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css');
+
+.marginTop {
+  margin-top: 34px;
+}
+
 </style>

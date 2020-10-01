@@ -3,7 +3,6 @@
     .label-divider {{label}}
       span(slot="label")
     .divider
-    slot(name="body")
 </template>
 
 <script>

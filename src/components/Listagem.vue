@@ -5,11 +5,10 @@
         .title
           | Listagem de formulários
         router-link(to="/criarFormulario")
-          Button.buttonDefaultSystem.link(
-            title="Criar formulário",
+          el-button.buttonDefaultSystem.link(
             type="default",
             to="'/criarFormulario'"
-          )
+          ) Criar formulário
       .body
         el-table(
           :data="tableData",
