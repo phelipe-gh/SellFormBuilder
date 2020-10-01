@@ -17,15 +17,11 @@
           template(slot="empty")
             | Não há registros.
           el-table-column(
-            label="Nome",
+            label="Nome do formulário",
             prop="name",
           )
           el-table-column(
-            label="CPF",
-            prop="tag"
-          )
-          el-table-column(
-            label="Data de nascimento",
+            label="Data de criação",
             prop="date"
           )
           el-table-column(
@@ -68,27 +64,18 @@ export default {
       tableData: [
         {
           date: '2016-05-03',
-          name: 'Rogger',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home',
-        },
+          name: 'Feedback empresarial'        },
         {
           date: '2016-05-02',
-          name: 'Tom',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Office',
+          name: 'Votação para líder'
         },
         {
           date: '2016-05-04',
-          name: 'Alex',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Home',
+          name: 'Melhorias da empresa'
         },
         {
           date: '2016-05-01',
-          name: 'Mary',
-          address: 'No. 189, Grove St, Los Angeles',
-          tag: 'Office',
+          name: 'Alinhamento para reunião'
         },
       ],
     };
