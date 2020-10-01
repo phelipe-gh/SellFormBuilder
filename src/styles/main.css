@@ -10,3 +10,13 @@
 .centeredRadio {
   padding-top: 12px;
 }
+
+.buttonDefaultSystem {
+  color:#705d1b;
+}
+
+.buttonDefaultSystem:hover {
+  background-color: #cc9f2fb1;
+  color: #ffffff;
+  border-color: #d3bd85b1;
+}

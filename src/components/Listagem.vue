@@ -2,11 +2,12 @@
   .container
     .component
       .header
-        h2.title Listagem de formulários
+        .title
+          | Listagem de formulários
         router-link(to="/criarFormulario")
-          Button.link(
+          Button.buttonDefaultSystem.link(
             title="Criar formulário",
-            type="primary",
+            type="default",
             to="'/criarFormulario'"
           )
       .body
@@ -111,7 +112,7 @@ export default {
     padding: 3% 5% 5% 5%;
     width: 65%;
     border-radius: 10px;
-    background-color: #eef8ff;
+    background-color: #f3eede;
  
     .header {
       display: flex;
@@ -121,8 +122,7 @@ export default {
 
     .title {
       margin-top: 2%;
-      font-size: 25px;
-      font-family: Arial, Helvetica, sans-serif;
+      font-size: xx-large;
     }
 
     .body {

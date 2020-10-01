@@ -21,8 +21,9 @@ export default {
 
 .topo {
   width: 100%;
+  height: 70px;
   display: flex;
-  background-color: #f3f7fa;
+  background-color: #e2d5ae;
   font-size: xx-large;
   border-bottom: solid 1px #eaeef1;
   justify-content: center
