@@ -1,6 +1,7 @@
 <template lang='pug'>
 div
   Main-header
+  flash-message(:position="'right top'")
   router-view
 </template>
 <script>
@@ -10,8 +11,7 @@ import Listagem from '@/components/Listagem'
 export default {
 
   components: {
-    MainHeader,
-    Listagem
+    MainHeader
   },
 }
 </script>

@@ -2,35 +2,31 @@
 div
   el-row(type="flex", :gutter="40")
     el-col(:lg="5")
-      label Tamanho da fonte primária:
-      el-input(type="number", :maxlength='2', v-model='fontPrimaria')
+      label Tamanho da fonte primária (px):
+      el-input-number(v-model='personalizacao.fontSizePrimary' :max='50' :min='1')
+
     el-col(:lg="5")
-      label Tamanho da fonte secundária:
-      el-input(type="number" v-model='fontSecundaria', :maxlength='2')
+      label Tamanho da fonte secundária (px):
+      el-input-number(v-model='fontSecundaria' :max='50' :min='1')
     
   br
 
   el-row(type="flex", :gutter="40")
-    el-col(:lg="10")
-      p Cor das labels:
-      input(type='radio', v-model="corLabels", value="#000")
-      label(for='huey') Preto
-      input(type='radio', v-model="corLabels", value="#f00")
-      label(for='huey') Vermelho
-      input(type='radio', v-model="corLabels", value="#0f0")
-      label(for='huey') Verde
-      input(type='radio', v-model="corLabels", value="#00f")
-      label(for='huey') Azul
-      input(type='radio', v-model="corLabels", value="#ffff00")
-      label(for='huey') Amarelo
-      input(type='radio', v-model="corLabels", value="#993399")
-      label(for='huey') Roxo
-    el-col(:lg="8")
-      p Digite valor em hexádecimal:
-      input(
-        v-model='corLabels',
-        :maxlength='7'
-      )
+    el-col(:lg="18")
+      el-row
+        label Cor das labels:
+      el-row
+        el-radio-group(v-model='corLabels')
+          el-radio(v-model='corLabels' label='#000') Preto
+          el-radio(v-model='corLabels' label='#f00') Vermelho
+          el-radio(v-model='corLabels' label='#0f0') Verde
+          el-radio(v-model='corLabels' label='#00f') Azul
+          el-radio(v-model='corLabels' label='#ffff00') Amarelo
+          el-radio(v-model='corLabels' label='#993399') Roxo
+          el-radio(v-model='corLabels' label='#FFFFFF') Branco
+          el-radio(v-model='corLabels' label='#FF00FF') Rosa
+          el-radio(v-model='corLabels' label='#808080') Cinza
+          el-radio(v-model='corLabels' label='#432100') Maron
 
     el-col(:lg="6")
       div.showColor(v-bind:style='[btnStylesLabels]')
@@ -38,26 +34,21 @@ div
   br
 
   el-row(type="flex", :gutter="40")
-    el-col(:lg="10")
-      p Cor dos placeholders:
-      input(type='radio', v-model="corPlaceHolders", value="#000")
-      label(for='huey') Preto
-      input(type='radio', v-model="corPlaceHolders", value="#f00")
-      label(for='huey') Vermelho
-      input(type='radio', v-model="corPlaceHolders", value="#0f0")
-      label(for='huey') Verde
-      input(type='radio', v-model="corPlaceHolders", value="#00f")
-      label(for='huey') Azul
-      input(type='radio', v-model="corPlaceHolders", value="#ffff00")
-      label(for='huey') Amarelo
-      input(type='radio', v-model="corPlaceHolders", value="#993399")
-      label(for='huey') Roxo
-    el-col(:lg="8")
-      p Digite valor em hexádecimal:
-      input(
-        v-model='corPlaceHolders',
-        :maxlength='7'
-      )
+    el-col(:lg="18")
+      el-row
+        label Cor das placeholders:
+      el-row
+        el-radio-group(v-model='corPlaceHolders')
+          el-radio(v-model='corPlaceHolders' label='#000') Preto
+          el-radio(v-model='corPlaceHolders' label='#f00') Vermelho
+          el-radio(v-model='corPlaceHolders' label='#0f0') Verde
+          el-radio(v-model='corPlaceHolders' label='#00f') Azul
+          el-radio(v-model='corPlaceHolders' label='#ffff00') Amarelo
+          el-radio(v-model='corPlaceHolders' label='#993399') Roxo
+          el-radio(v-model='corPlaceHolders' label='#FFFFFF') Branco
+          el-radio(v-model='corPlaceHolders' label='#FF00FF') Rosa
+          el-radio(v-model='corPlaceHolders' label='#808080') Cinza
+          el-radio(v-model='corPlaceHolders' label='#432100') Maron
 
     el-col(:lg="6")
       div.showColor(v-bind:style='[btnStylesPlaceHolders]')
@@ -65,20 +56,24 @@ div
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate';
+
 export default {
+
   props: {
     personalizacao: {
       required: true
     }
   },
 
+  components: {
+    ValidationProvider
+  },
+
   data () {
     return {
-      overrideStyles: {
-        color:'#222222'
-      },
+      corPlaceHolders: '#000',
       corLabels: '#000',
-      corPlaceHolders: '#fff',
       fontPrimaria: null,
       fontSecundaria: null
     }

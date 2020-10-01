@@ -52,12 +52,11 @@
 
 <script>
 import Button from '@/components/Button';
-import ActionButton from '@/components/ActionButton';
+import Alert from '../utils/Alert';
 
 export default {
   components: {
-    Button,
-    ActionButton,
+    Button
   },
 
   data() {
@@ -78,8 +77,12 @@ export default {
           date: '2016-05-01',
           name: 'Alinhamento para reunião'
         },
-      ],
+      ]
     };
+  },
+
+  created() {
+    Alert.error('oi', '11');
   },
 
   methods: {
@@ -112,7 +115,7 @@ export default {
     padding: 3% 5% 5% 5%;
     width: 65%;
     border-radius: 10px;
-    background-color: #f3eede;
+    background-color: #d8e6f5;
  
     .header {
       display: flex;

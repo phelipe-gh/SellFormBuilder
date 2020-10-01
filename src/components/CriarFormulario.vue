@@ -3,45 +3,39 @@ div
   .container
     .component
       el-row
-        el-steps(:active='active', align-center, finish-status="success")
-          el-step(
-              v-for="step in steps",
-              :key="step.id",
-              :title="step.nome"
-            )
-      el-row(v-if="active==0")
-        .form
-          EstruturaBasica(:estrutura='estruturaBasica')
-      el-row(v-if="active==1")
-        .form
-          Personalizacao(:personalizacao='personalizacao')
-  
-      ButtonsCadastro(
-        @proximo="proximo",
-        @voltar="voltar"
-      )
-  .sair
-    router-link(to="/")
-      el-button.buttonDefaultSystemSecundario(plain
-        to="'/'"
-      ) Sair
+        Divider(label="Estrutura básica")
+        EstruturaBasica(:estrutura='estruturaBasica')
+      el-row
+        Divider(label="Personalização")
+        Personalizacao(:personalizacao='personalizacao')
+      el-row
+        Divider(label="Visualização")
+        Visualizacao
+
+      .sair
+        router-link(to="/")
+          el-button.buttonDefaultSystemSecundario(plain
+            to="'/'"
+          ) Sair
 
 </template>
 
 <script>
 import EstruturaBasica from '@/components/EstruturaBasica'
 import Personalizacao from '@/components/Personalizacao'
-import ButtonsCadastro from '@/components/ButtonsCadastro';
-import Button from '@/components/Button';
-
+import Button from '@/components/Button'
+import Divider from '@/components/Divider'
+import Alert from '../utils/Alert'
+import Visualizacao from '@/components/Visualizacao'
 
 export default {
 
   components: {
     EstruturaBasica,
     Personalizacao,
-    ButtonsCadastro,
-    Button
+    Button,
+    Divider,
+    Visualizacao
   },
 
   data () {
@@ -76,14 +70,6 @@ export default {
   },
   
   computed: {
-    isValidForm() {
-      // if(!this.estruturaBasica.qntButtons || 
-      // !this.estruturaBasica.acoes ||
-      // this.estruturaBasica.qntButtons.length !== this.estruturaBasica.acoes.length){
-      //   return true;
-      // }
-      return false;
-    }
   },
   methods: {
     proximo() {
@@ -91,12 +77,18 @@ export default {
         this.active++;
         this.activeStep = `${this.active}`;
       }
+      if(!this.isValid()) {
+        Alert.error('Campos obrigatórios', 'Informe os campos destacados')
+      }
     },
     voltar() {
       if(this.active !== 0) { 
         this.active--;
         this.activeStep = `${this.active}`;
       }
+    },
+    isValid() {
+      return false;
     }
   }
 };
@@ -117,11 +109,7 @@ export default {
     padding: 3% 5% 5% 5%;
     width: 65%;
     border-radius: 10px;
-    background-color: #f3eede;
-  }
-
-  .form {
-    margin-top: 1%;
+    background-color: #e9f2ff;
   }
 
   .marginButton{
@@ -131,6 +119,6 @@ export default {
 
   .sair{
     text-align: center;
-    margin-top: 5px;
+    margin-top: 55px;
   }
 </style>

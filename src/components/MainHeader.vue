@@ -24,9 +24,10 @@ export default {
   height: 50px;
   align-items: center;
   display: flex;
-  background-color: #e2d5ae;
+  color: white;
+  background-color: #5790db;
   font-size: xx-large;
-  border-bottom: solid 1px #eaeef1;
+  border-bottom: solid 1px #737987;
   justify-content: center
 }
 

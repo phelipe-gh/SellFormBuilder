@@ -1,8 +1,11 @@
 <template lang='pug'>
-  div
-    el-row(type='flex', :gutter='40')
-      el-col(:lg='12')
-        p Campos:
+div
+
+  el-row(type='flex', :gutter='40')
+    el-col(:lg='12')
+      validation-provider(name="estrutura.campos", :rules="estrutura.campos.length > 0 ? '' : 'required'")
+        div(slot-scope='{ errors }')
+          label Campos:
           el-input(
             v-model='estrutura.input'
           )
@@ -19,88 +22,85 @@
             type='info',
             size='medium',
             @close='removeCampo(index)'
-          ) {{ campo.nome }} 
-      el-col(:lg='8')
-        p Inserir campo telefone ?
-        el-radio-group(
-          v-model='estrutura.hasTelefone',
-          size='medium',
-          @change='setTelefone()'
-        )
-          el-radio(
-            :label='true'
-          ) Sim
-          el-radio(
-            :label='false'
-          ) Não
-    el-row(type='flex', :gutter='40')
-      el-col(:lg='10')
-        p Inserir Botão primário ?
-        el-radio-group(
-          v-model='estrutura.hasBotaoPrimario',
-          @change='changeButtonPrimary()'
-        )
-          el-radio(
-            :label='true'
-          ) Sim
-          el-radio(
-            :label='false'
-          ) Não
-      el-col(:lg='8')
-        p Botão primário:
-        el-input(
-          :disabled='!estrutura.hasBotaoPrimario',
-          v-model='estrutura.botaoPrimario.nome',
-          :max-length='10'
-        )
-      el-col(:lg='6')
-        p Ação botão primário:
-        el-select(
-          :disabled='!estrutura.hasBotaoPrimario',
-          v-model='estrutura.botaoPrimario.acao',
-        )
-          el-option(
-            v-for='acao in acoes',
-            :key='acao.id',
-            :label='acao.nome',
-            :value='acao.id'
+          ) {{ campo.nome }}
+          p.alertText {{ errors[0] }}
+
+    el-col(:lg='8')
+      p Inserir campo telefone ?
+      el-radio-group(
+        v-model='estrutura.hasTelefone',
+        size='medium',
+        @change='setTelefone()'
+      )
+        el-radio(
+          :label='true'
+        ) Sim
+        el-radio(
+          :label='false'
+        ) Não
+
+  el-row(type='flex', :gutter='40')
+    el-col(:lg='12')
+      validation-provider(name="botaoPrimario", :rules="estrutura.campos.length > 0 ? '' : 'required'")
+        div(slot-scope='{ errors }')
+          label Botão primário:
+          el-input(
+            v-model='estrutura.botaoPrimario.nome',
+            :max-length='10'
           )
-    el-row(type='flex', :gutter='40')
-      el-col(:lg='10')
-        p Inserir botão secundário ?
-        el-radio-group(
-          v-model='estrutura.hasBotaoSecundario',
-          @change='changeButtonSecondary()'
-        )
-          el-radio(
-            :label='true'
-          ) Sim
-          el-radio(
-            :label='false'
-          ) Não
-      el-col(:lg='8')
-        p Botão secundário:
-        el-input(
-          :disabled='!estrutura.hasBotaoSecundario',
-          v-model='estrutura.botaoSecundario.nome',
-          :max-length='10'
-        )
-      el-col(:lg='6')
-        p Ação botão secundário:
-        el-select(
-          :disabled='!estrutura.hasBotaoSecundario',
-          v-model='estrutura.botaoSecundario.acao',
-        )
-          el-option(
-            v-for='acao in acoes',
-            :key='acao.id',
-            :label='acao.nome',
-            :value='acao.id'
+          p.alertText {{ errors[0] }}
+
+    el-col(:lg='12')
+      validation-provider(name="botaoPrimario", rules='required')
+        div(slot-scope='{ errors }')
+          label Ação botão primário:
+          el-select.full-width.input(
+            v-model='estrutura.botaoPrimario.acao',
           )
+            el-option(
+              v-for='acao in acoes',
+              :key='acao.id',
+              :label='acao.nome',
+              :value='acao.id'
+            )
+          p.alertText {{ errors[0] }}
+
+  el-row(type='flex', :gutter='40')
+    el-col(:lg='12')
+      validation-provider(name="estrutura.botaoSecundario.nome", rules='required')
+        div(slot-scope='{ errors }')
+          label Botão secundário:
+          el-input(
+            v-model='estrutura.botaoSecundario.nome',
+            :max-length='10'
+          )
+          p.alertText {{ errors[0] }}
+
+    el-col(:lg='12')
+      validation-provider(name="estrutura.botaoSecundario.acao", rules='required')
+        div(slot-scope='{ errors }')
+          label Ação botão secundário:
+          el-select.full-width.input(
+            v-model='estrutura.botaoSecundario.acao',
+          )
+            el-option(
+              v-for='acao in acoes',
+              :key='acao.id',
+              :label='acao.nome',
+              :value='acao.id'
+            )
+          p.alertText {{ errors[0] }}
 </template>
 
 <script>
+import { ValidationProvider } from 'vee-validate';
+
 export default {
+
+  components: {
+    ValidationProvider
+  },
+
   props: {
     estrutura: {
       required: true
