@@ -4,7 +4,7 @@ import router from './router'
 import locale from 'element-ui/lib/locale';
 import lang from 'element-ui/lib/locale/lang/pt-br';
 
-import './styles/main.css';
+import './styles/main.scss';
 
 import {
   Button,

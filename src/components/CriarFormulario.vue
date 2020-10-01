@@ -22,7 +22,7 @@ div
       )
   .sair
     router-link(to="/")
-      el-button(plain
+      el-button.buttonDefaultSystemSecundario(plain
         to="'/'"
       ) Sair
 
@@ -117,7 +117,7 @@ export default {
     padding: 3% 5% 5% 5%;
     width: 65%;
     border-radius: 10px;
-    background-color: #eef8ff;
+    background-color: #f3eede;
   }
 
   .form {

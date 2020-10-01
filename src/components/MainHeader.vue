@@ -1,7 +1,7 @@
 <template lang="pug">
   div#mainHeader
     .topo
-      |Construtor de formulário
+      p Construtor de formulário
 </template>
 
 <script>
@@ -21,7 +21,8 @@ export default {
 
 .topo {
   width: 100%;
-  height: 70px;
+  height: 50px;
+  align-items: center;
   display: flex;
   background-color: #e2d5ae;
   font-size: xx-large;

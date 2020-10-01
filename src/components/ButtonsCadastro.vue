@@ -1,6 +1,6 @@
 <template lang="pug">
   .buttons
-    el-button(
+    el-button.buttonDefaultSystemSecundario(
       type="default",
       @click="voltar"
     )
@@ -8,8 +8,8 @@
         b.marginTextBottom
           | Voltar
     .end
-      el-button(
-        type="primary",
+      el-button.buttonDefaultSystem(
+        type="default",
         @click="proximo"
       )
         span.center
