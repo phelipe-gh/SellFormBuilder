@@ -42,3 +42,33 @@
 .full-width.input {
   width: 100%;
 }
+
+.el-tag {
+  background-color: rgb(117, 168, 245) !important;
+  color: white !important;
+}
+
+.el-tag.el-tag--info .el-tag__close {
+  color: rgb(255, 255, 255) !important;
+}
+
+.el-carousel__item h3 {
+  color: #e7009a;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

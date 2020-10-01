@@ -52,6 +52,7 @@ export default {
         campos: [],
         botaoPrimario: {nome: null, acao: null},
         botaoSecundario: {nome: null, acao: null},
+        botaoTerciario: {nome: null, acao: null},
         hasBotaoPrimario: null,
         hasBotaoSecundario: null
       },

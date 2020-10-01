@@ -22,10 +22,15 @@ import {
   Option,
   Select,
   Tag,
+  Carousel,
+  CarouselItem,
   Radio,
+  Image,
   TableColumn
 } from 'element-ui';
 
+Vue.use(CarouselItem);
+Vue.use(Carousel);
 Vue.use(Button);
 Vue.use(RadioGroup);
 Vue.use(Radio);
@@ -39,6 +44,7 @@ Vue.use(Select);
 Vue.use(Option);
 Vue.use(InputNumber);
 Vue.use(Tag);
+Vue.use(Image);
 
 Vue.use(FlashMessage);
 

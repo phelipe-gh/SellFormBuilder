@@ -41,7 +41,7 @@ div
 
   el-row(type='flex', :gutter='40')
     el-col(:lg='12')
-      validation-provider(name="botaoPrimario", :rules="estrutura.campos.length > 0 ? '' : 'required'")
+      validation-provider
         div(slot-scope='{ errors }')
           label Botão primário:
           el-input(
@@ -51,7 +51,7 @@ div
           p.alertText {{ errors[0] }}
 
     el-col(:lg='12')
-      validation-provider(name="botaoPrimario", rules='required')
+      validation-provider(:rules="estrutura.botaoPrimario.nome ? 'required' : ''")
         div(slot-scope='{ errors }')
           label Ação botão primário:
           el-select.full-width.input(
@@ -67,7 +67,33 @@ div
 
   el-row(type='flex', :gutter='40')
     el-col(:lg='12')
-      validation-provider(name="estrutura.botaoSecundario.nome", rules='required')
+      validation-provider
+        div(slot-scope='{ errors }')
+          label Botão terciário:
+          el-input(
+            v-model='estrutura.botaoTerciario.nome',
+            :max-length='10'
+          )
+          p.alertText {{ errors[0] }}
+
+    el-col(:lg='12')
+      validation-provider(:rules="estrutura.botaoTerciario.nome ? 'required' : ''")
+        div(slot-scope='{ errors }')
+          label Ação botão terciário:
+          el-select.full-width.input(
+            v-model='estrutura.botaoTerciario.acao',
+          )
+            el-option(
+              v-for='acao in acoes',
+              :key='acao.id',
+              :label='acao.nome',
+              :value='acao.id'
+            )
+          p.alertText {{ errors[0] }}
+
+  el-row(type='flex', :gutter='40')
+    el-col(:lg='12')
+      validation-provider
         div(slot-scope='{ errors }')
           label Botão secundário:
           el-input(
@@ -77,7 +103,7 @@ div
           p.alertText {{ errors[0] }}
 
     el-col(:lg='12')
-      validation-provider(name="estrutura.botaoSecundario.acao", rules='required')
+      validation-provider(:rules="estrutura.botaoSecundario.nome ? 'required' : ''")
         div(slot-scope='{ errors }')
           label Ação botão secundário:
           el-select.full-width.input(
@@ -121,16 +147,6 @@ export default {
       }
       this.estrutura.campos.push(campoAdded);
       this.estrutura.input = null;
-    },
-    changeButtonPrimary() {
-      if(!this.estrutura.hasBotaoPrimario) {
-        this.estrutura.botaoPrimario = {nome: null, acoes: null};
-      }
-    },
-    changeButtonSecondary() {
-      if(!this.estrutura.hasBotaoSecundario) {
-        this.estrutura.botaoSecundario = {nome: null, acoes: null};
-      }
     },
     removeCampo(index) {
       this.estrutura.campos.splice(index, 1);
