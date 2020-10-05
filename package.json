@@ -12,10 +12,12 @@
     "@smartweb/vue-flash-message": "^0.6.5",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
+    "v-mask": "^2.2.3",
     "vee-validate": "^3.4.0",
     "vue": "^2.6.11",
     "vue-el-element": "^1.12.8",
     "vue-flash-message": "^0.7.2",
+    "vue-lodash": "^2.1.2",
     "vue-router": "^3.2.0",
     "vue-the-mask": "^0.11.1"
   },

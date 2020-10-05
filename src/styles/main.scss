@@ -65,13 +65,43 @@
   justify-content: center;
 }
 
-.blockClass {
-  color: blue !important;
-  background-color: rgb(0, 17, 255) !important;
+.msg {
+  position: absolute;
+  z-index: 9999 !important;
 }
 
-.index{
-  background-color: blue !important;
-  z-index: 1000 !important;
-  position: absolute;
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  margin-top: 3%; 
+}
+
+.component {
+
+  padding: 3% 5% 5% 5%;
+  width: 65%;
+  border-radius: 10px;
+  background-color: #d8e6f5;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin-top: 2%;
+    font-size: xx-large;
+  }
+
+  .body {
+    border-radius: 5px;
+  }
+
+  .table {
+    margin-top: 20px;
+    width: 100%;
+  }
 }

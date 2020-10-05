@@ -1,15 +1,20 @@
 <template lang="pug">
 .container
   .component
-    el-row
-      Divider(label="Estrutura básica")
-      EstruturaBasica(:estrutura='form.estruturaBasica')
-    el-row
-      Divider(label="Personalização")
-      Personalizacao(:personalizacao='form.personalizacao')
-    el-row
-      Divider(label="Visualização")
-      Visualizacao
+    validation-observer(ref='observer', tag='form', v-slot="{ invalid }")
+      el-row
+        Divider(label="Estrutura básica")
+        EstruturaBasica(:estrutura='form.estruturaBasica')
+      el-row
+        Divider(label="Personalização")
+        Personalizacao(:personalizacao='form.personalizacao')
+      el-row
+        Divider
+    .centerItens
+      el-row(type="flex", :gutter="40")
+        el-col(:lg="24")
+          el-button.btn.btn-primary(type="primary", @click='validarAndGerarFormulario()')
+            .el-icon-notebook-2 Gerar formulário
 
     el-row
       .sair
@@ -25,21 +30,19 @@ import EstruturaBasica from '@/components/EstruturaBasica'
 import Personalizacao from '@/components/Personalizacao'
 import Divider from '@/components/Divider'
 import Alert from '../utils/Alert'
-import Visualizacao from '@/components/Visualizacao'
-import ValidateForm from '../utils/validatorForm'
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
 
   components: {
     EstruturaBasica,
     Personalizacao,
-    Divider,
-    Visualizacao,
-    ValidateForm
+    Divider
   },
 
   data () {
     return {
+      pdi: null,
       form: {
         estruturaBasica: {
           button: null,
@@ -52,10 +55,10 @@ export default {
           botaoTerciario: {nome: null, acao: null}
         },
         personalizacao: {
-          corLabels: null,
-          corPlaceholders: null,
+          corLabels: '#000',
+          corPlaceholders: '#f00',
           fontSizePrimary: null,
-          fontSizeSecundary: null
+          imagemFundo: null
         }
       }
     }
@@ -69,26 +72,18 @@ export default {
   computed: {
   },
   methods: {
-    proximo() {
-      if(this.active !== 2) { 
-        this.active++;
-        this.activeStep = `${this.active}`;
+    async validarAndGerarFormulario() {
+
+      const valid = await this.$refs.observer.validate();
+
+      if(!valid) {
+        return Alert.error('Campos obrigatórios', 'Preencha os campos destacados');
+      } else if (this.form.estruturaBasica.campos.length === 0) {
+        return Alert.error('Adicione pelo menos um campo');
       }
-      if(!this.isValid()) {
-        Alert.error('Campos obrigatórios', 'Informe os campos destacados')
-      }
-    },
-    voltar() {
-      if(this.active !== 0) { 
-        this.active--;
-        this.activeStep = `${this.active}`;
-      }
-    },
-    isValid() {
-      return false;
-    },
-    validarAndGerarFormulario() {
-      ValidateForm.validarFormulario(this.form);
+
+      this.$router.push({ name: 'formulario', params: {formulario: this.form }})
+  
     }
   }
 };
@@ -98,23 +93,14 @@ export default {
 <style scoped lang="scss">
 @import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;   
-    margin-top: 3%; 
-  }
-
-  .component {
-    padding: 3% 5% 5% 5%;
-    width: 65%;
-    border-radius: 10px;
-    background-color: #e9f2ff;
-  }
-
   .marginButton{
     margin-top: 10px;
     float: right;
+  }
+
+  .centerItens {
+    display: flex;
+    justify-content: center;  
   }
 
   .sair{

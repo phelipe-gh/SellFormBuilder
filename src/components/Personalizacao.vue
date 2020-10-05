@@ -1,26 +1,23 @@
 <template lang="pug">
 div
   el-row(:gutter="40")
-    el-col(:lg="5")
+    el-col(:lg="12")
       label Tamanho da fonte primária (px):
+      br
       el-input-number(v-model='personalizacao.fontSizePrimary' :max='50' :min='1')
-
-    el-col(:lg="5")
-      label Tamanho da fonte secundária (px):
-      el-input-number(v-model='personalizacao.fontSecundaria' :max='50' :min='1')
 
   el-row(:gutter="40")
     el-col(:lg="20")
       label Cor das labels:
   el-row
-    el-radio-group(v-model='corLabels')
-      el-radio(v-model='corLabels' label='#000') Preto
-      el-radio(v-model='corLabels' label='#f00') Vermelho
-      el-radio(v-model='corLabels' label='#0f0') Verde
-      el-radio(v-model='corLabels' label='#00f') Azul
-      el-radio(v-model='corLabels' label='#ffff00') Amarelo
-      el-radio(v-model='corLabels' label='#993399') Roxo
-      el-radio(v-model='corLabels' label='#FFFFFF') Branco
+    el-radio-group(v-model='personalizacao.corLabels')
+      el-radio(v-model='personalizacao.corLabels' label='#000') Preto
+      el-radio(v-model='personalizacao.corLabels' label='#f00') Vermelho
+      el-radio(v-model='personalizacao.corLabels' label='#0f0') Verde
+      el-radio(v-model='personalizacao.corLabels' label='#00f') Azul
+      el-radio(v-model='personalizacao.corLabels' label='#ffff00') Amarelo
+      el-radio(v-model='personalizacao.corLabels' label='#993399') Roxo
+      el-radio(v-model='personalizacao.corLabels' label='#FFFFFF') Branco
 
   el-row
     el-col(:lg="24")
@@ -30,14 +27,14 @@ div
     el-col(:lg="20")
       label Cor das placeholders:
   el-row
-    el-radio-group(v-model='corPlaceHolders')
-      el-radio(v-model='corPlaceHolders' label='#000') Preto
-      el-radio(v-model='corPlaceHolders' label='#f00') Vermelho
-      el-radio(v-model='corPlaceHolders' label='#0f0') Verde
-      el-radio(v-model='corPlaceHolders' label='#00f') Azul
-      el-radio(v-model='corPlaceHolders' label='#ffff00') Amarelo
-      el-radio(v-model='corPlaceHolders' label='#993399') Roxo
-      el-radio(v-model='corPlaceHolders' label='#FFFFFF') Branco
+    el-radio-group(v-model='personalizacao.corPlaceHolders')
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#000') Preto
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#f00') Vermelho
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#0f0') Verde
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#00f') Azul
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#ffff00') Amarelo
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#993399') Roxo
+      el-radio(v-model='personalizacao.corPlaceHolders' label='#FFFFFF') Branco
 
   el-row
     el-col(:lg="24")
@@ -52,15 +49,16 @@ div
         el-image(style='width: 100%; height: 100%' :src='item.url' fit='fit') {{ item.nome }}
   
   el-row.center
-    validation-provider
+    validation-provider(rules="required")
       div(slot-scope='{ errors }')
-        el-radio-group(v-model='pictureSelected')
-          el-radio(v-model='pictureSelected' label='FEEDBACK', size="medium") Feedback
-          el-radio(v-model='pictureSelected' label='ESTUDOS', size="medium") Estudos
-          el-radio(v-model='pictureSelected' label='TECNOLOGIA', size="medium") Tecnologia
-          el-radio(v-model='pictureSelected' label='ESPORTE', size="medium") Esporte
-          el-radio(v-model='pictureSelected' label='CRIATIVIDADE', size="medium") Criatividade
-          el-radio(v-model='pictureSelected' label='NATUREZA', size="medium") Natureza
+        el-radio-group(v-model='personalizacao.imagemFundo')
+          el-radio(v-model='personalizacao.imagemFundo' label=1, size="medium") Estudos
+          el-radio(v-model='personalizacao.imagemFundo' label=2, size="medium") Tecnologia
+          el-radio(v-model='personalizacao.imagemFundo' label=3, size="medium") Esporte
+          el-radio(v-model='personalizacao.imagemFundo' label=4, size="medium") Natureza
+          el-radio(v-model='personalizacao.imagemFundo' label=5, size="medium") Criatividade
+          el-radio(v-model='personalizacao.imagemFundo' label=6, size="medium") Feedback
+
         p.alertText {{ errors[0] }}
 
 </template>
@@ -83,8 +81,6 @@ export default {
 
   data () {
     return {
-      corPlaceHolders: '#000',
-      corLabels: '#000',
       pictures: Pictures,
       pictureSelected: null
     }
@@ -93,12 +89,12 @@ export default {
   computed: {
     btnStylesLabels() {
       return {
-        "background-color": this.corLabels,
+        "background-color": this.personalizacao.corLabels,
       };
     },
     btnStylesPlaceHolders() {
       return {
-        "background-color": this.corPlaceHolders,
+        "background-color": this.personalizacao.corPlaceHolders,
       };
     }
   },

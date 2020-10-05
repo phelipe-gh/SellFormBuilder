@@ -36,15 +36,13 @@
               i.el-icon-edit.pointer(
                 text="Editar",
                 method="editar",
-                @edit="edit(scope.row)",
-                @click="teste()"
+                @edit="edit(scope.row)"
               )
               |&nbsp
               i.el-icon-delete.pointer(
                 text="Remover",
                 method="remover",
-                @delete="delete(scope.row)",
-                @click="teste()"
+                @delete="delete(scope.row)"
               )
 
 </template>
@@ -81,13 +79,9 @@ export default {
   },
 
   created() {
-    Alert.error('oi', '11');
   },
 
   methods: {
-    teste() {
-      window.alert('Oi');
-    },
     redirectTo() {
       this.$router.push("/criarFormulario");
     }
@@ -102,38 +96,4 @@ export default {
     cursor: pointer;
   }
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;   
-    margin-top: 3%; 
-  }
-
-  .component {
-
-    padding: 3% 5% 5% 5%;
-    width: 65%;
-    border-radius: 10px;
-    background-color: #d8e6f5;
- 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .title {
-      margin-top: 2%;
-      font-size: xx-large;
-    }
-
-    .body {
-      border-radius: 5px;
-    }
-
-    .table {
-      margin-top: 20px;
-      width: 100%;
-    }
-  }
 </style>
