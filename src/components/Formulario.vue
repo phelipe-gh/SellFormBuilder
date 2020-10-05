@@ -17,7 +17,7 @@
       el-col(:lg="24")
         | Telefone:
         el-input(
-        v-mask="['(##) #-####-####']",
+        v-mask="'(##)####-####'",
           v-model="telefone",
           maxlength="14"
         )

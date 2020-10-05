@@ -63,11 +63,6 @@ export default {
       }
     }
   },
-
-  mounted() {
-    this.activeStep = this.step;
-    this.active = this.step;
-  },
   
   computed: {
   },
@@ -83,7 +78,7 @@ export default {
       }
 
       this.$router.push({ name: 'formulario', params: {formulario: this.form }})
-  
+
     }
   }
 };

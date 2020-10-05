@@ -125,7 +125,6 @@ export default {
 
   data () {
     return {
-      nomeCampo: null,
       acoes: [{nome: 'Abrir link', id: 1}, {nome: 'Mostrar dados preenchidos', id: 2}],
       rules: {
         nomeCampo: [

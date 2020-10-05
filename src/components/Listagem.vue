@@ -48,13 +48,9 @@
 </template>
 
 <script>
-import Button from '@/components/Button';
 import Alert from '../utils/Alert';
 
 export default {
-  components: {
-    Button
-  },
 
   data() {
     return {
