@@ -1,7 +1,7 @@
-<template lang="pug">
+<template lang='pug'>
   el-row
     .label-divider {{label}}
-      span(slot="label")
+      span(slot='label')
     .divider
 </template>
 
@@ -19,7 +19,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 
 .label-divider {
   font-size: 24px;

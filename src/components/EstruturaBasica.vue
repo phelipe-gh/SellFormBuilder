@@ -3,7 +3,7 @@ div
   validation-observer(ref='observer')
     el-row(type='flex', :gutter='40')
       el-col(:lg='12')
-        validation-provider(:rules="estrutura.campos.length === 0 ? 'required' : ''", v-slot="{ errors }")
+        validation-provider(:rules="estrutura.campos.length === 0 ? 'required' : ''", v-slot='{ errors }')
           label Campos:
           el-input(v-model='estrutura.nomeCampo')
             el-button(

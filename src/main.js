@@ -8,9 +8,6 @@ import FlashMessage from '@smartweb/vue-flash-message'
 import { ValidationProvider, ValidationObserver } from 'vee-validate'
 import carregarExtends from './utils/veeValidate'
 import VueMask from 'v-mask'
-import VueLodash from 'vue-lodash'
-import _ from 'lodash';    
-import lodash from 'lodash'
 
 import './styles/main.scss'
 
@@ -56,16 +53,13 @@ Vue.use(Form)
 Vue.use(FormItem)
 Vue.use(Checkbox)
 
-Vue.use(VueMask)
 Vue.use(FlashMessage, { time: 1000, wrapperClass: 'flash-wrapper', blockClass: 'blockClass' })
-Vue.use(VueLodash, { name: 'custom' , lodash: lodash })
+Vue.use(VueMask);
 
 Vue.component('ValidationProvider', ValidationProvider)
 Vue.component('ValidationObserver', ValidationObserver)
 
 locale.use(lang);
-
-Object.defineProperty(Vue.prototype, '$_', { value: _ });
 
 Vue.config.productionTip = false
 

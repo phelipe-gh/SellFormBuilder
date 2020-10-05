@@ -1,4 +1,4 @@
-<template lang="pug">
+<template lang='pug'>
   div#mainHeader
     .topo
       p Construtor de formulário
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 
 .topo {
   width: 100%;

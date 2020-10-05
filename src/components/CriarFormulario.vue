@@ -1,26 +1,26 @@
-<template lang="pug">
+<template lang='pug'>
 .container
   .component
-    validation-observer(ref='observer', tag='form', v-slot="{ invalid }")
+    validation-observer(ref='observer', tag='form', v-slot='{ invalid }')
       el-row
-        Divider(label="Estrutura básica")
+        Divider(label='Estrutura básica')
         EstruturaBasica(:estrutura='form.estruturaBasica')
       el-row
-        Divider(label="Personalização")
+        Divider(label='Personalização')
         Personalizacao(:personalizacao='form.personalizacao')
       el-row
         Divider
     .centerItens
-      el-row(type="flex", :gutter="40")
-        el-col(:lg="24")
-          el-button.btn.btn-primary(type="primary", @click='validarAndGerarFormulario()')
+      el-row(type='flex', :gutter='40')
+        el-col(:lg='24')
+          el-button.btn.btn-primary(type='primary', @click='validarAndGerarFormulario()')
             .el-icon-notebook-2 Gerar formulário
 
     el-row
       .sair
-        router-link(to="/")
+        router-link(to='/')
           el-button.buttonDefaultSystemSecundario(
-            to="'/'"
+            to=''/''
           ) Sair
 
 </template>
@@ -85,8 +85,8 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
-@import url("//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+<style scoped lang='scss'>
+@import url('//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css');
 
   .marginButton{
     margin-top: 10px;
