@@ -12,7 +12,7 @@ npm run serve
 
 # Descrição do sistema
 ```
- - Tela inicial com listagem dos formulário
+ - Tela inicial com listagem dos formulários
  - Botão de cadastrar novo formulário
  - Ao cadastrar existem as seguintes regras:
 	- Inserir ao menos um campo
