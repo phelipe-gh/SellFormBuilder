@@ -10,15 +10,13 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+# Descrição do sistema
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+ - Tela inicial com listagem dos formulário
+ - Botão de cadastrar novo formulário
+ - Ao cadastrar existem as seguintes regras:
+	- Inserir ao menos um campo
+ 	- Em caso de adicionar botão, informar a funcionalidade
+ 	- Selecionar a cor das labels e placeholder (Opcional)
+	- Selecionar o tamanho das fontes (Inicialmente 1px)
+	
