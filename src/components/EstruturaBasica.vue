@@ -17,7 +17,6 @@ div
             :key='index',
             closable,
             type='info',
-            size='medium',
             @close='removeCampo(index)'
           ) {{ campo.nome }}
           p.alertText {{ errors[0] }}
