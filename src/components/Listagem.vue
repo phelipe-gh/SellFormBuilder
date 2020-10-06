@@ -74,9 +74,6 @@ export default {
     };
   },
 
-  created() {
-  },
-
   methods: {
     redirectTo() {
       this.$router.push('/criarFormulario');
@@ -87,9 +84,8 @@ export default {
 
 <style scoped lang='scss'>
 @import url('//unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css');
-  
+
   .pointer {
     cursor: pointer;
   }
-
 </style>

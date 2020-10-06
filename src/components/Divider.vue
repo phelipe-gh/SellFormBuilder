@@ -24,6 +24,7 @@ export default {
 .label-divider {
   font-size: 24px;
   font-weight: bold;
+  color: #1159b8;
 }
 
 .divider {

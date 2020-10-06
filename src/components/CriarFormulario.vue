@@ -4,7 +4,7 @@
     validation-observer(ref='observer', tag='form', v-slot='{ invalid }')
       el-row
         Divider(label='Estrutura básica')
-        EstruturaBasica(:estrutura='form.estruturaBasica')
+        EstruturaBasica(:estrutura='form.estruturaBasica', @setHasButton='setHasButton')
       el-row
         Divider(label='Personalização')
         Personalizacao(:personalizacao='form.personalizacao')
@@ -58,14 +58,16 @@ export default {
           corLabels: '#000',
           corPlaceholders: '#f00',
           fontSizePrimary: null,
-          imagemFundo: null
+          imagemFundo: null,
+          corButtons: 'black',
+          borderRadius: 'none',
+          backgroundColorButton: 'white',
+          hasButton: false
         }
       }
     }
   },
   
-  computed: {
-  },
   methods: {
     async validarAndGerarFormulario() {
 
@@ -79,6 +81,9 @@ export default {
 
       this.$router.push({ name: 'formulario', params: {formulario: this.form }})
 
+    },
+    setHasButton(value) {
+      this.form.personalizacao.hasButton = value
     }
   }
 };
@@ -102,4 +107,5 @@ export default {
     text-align: center;
     margin-top: 55px;
   }
+
 </style>

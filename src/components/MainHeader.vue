@@ -25,10 +25,9 @@ export default {
   align-items: center;
   display: flex;
   color: white;
-  background-color: #5790db;
+  background-color: #2d78da;
   font-size: xx-large;
   border-bottom: solid 1px #737987;
   justify-content: center
 }
-
 </style>

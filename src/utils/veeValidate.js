@@ -11,7 +11,6 @@ const carregarExtends = () => {
     },
     message: 'Adicione ao menos um campo.' 
   })
-
 }
 
 export default carregarExtends

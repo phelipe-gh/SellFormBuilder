@@ -18,8 +18,14 @@
         el-input(
           v-mask="'(##)####-####'",
           v-model='telefone',
+          placeholder='35-9999-9999'
           maxlength='14'
         )
+
+    el-row(v-if='hasButton')
+      el-col.centerItens(:lg='24')
+        p.inlineButtons(v-for='button in getButtonsForm()')
+          el-button.btn.btn-primary(:style='stylesButtons') {{ button }}
 
 </template>
 
@@ -49,12 +55,24 @@ export default {
 
   computed: {
     stylesForm() {
+
       return {
         'background-image': `url(${this.imagemFundo})`,
         'color': `${this.formulario.personalizacao.corLabels}!important`,
         'font-size': `${this.formulario.personalizacao.fontSizePrimary}px`
       }
+
+    },
+    stylesButtons() {
+
+      return {
+        'color': `${this.formulario.personalizacao.corButtons}`,
+        'border-radius': `${this.formulario.personalizacao.borderRadius ? '25px' : 'none'}`,
+        'background-color': `${this.formulario.personalizacao.backgroundColorButton}`
+      }
+
     }
+
   },
 
   methods: {
@@ -68,6 +86,33 @@ export default {
       }
 
       this.loaded = true
+
+    },
+
+    hasButton() {
+
+      if(this.formulario.estruturaBasica.botaoPrimario||
+        this.formulario.estruturaBasica.botaoPrimario ||
+        this.formulario.estruturaBasica.botaoPrimario) {
+
+          return true
+
+        }
+
+      return false
+
+    },
+
+    getButtonsForm() {
+
+      let buttons = []
+
+      if(this.formulario.estruturaBasica.botaoPrimario.nome) buttons.push(this.formulario.estruturaBasica.botaoPrimario.nome)
+      if(this.formulario.estruturaBasica.botaoSecundario.nome) buttons.push(this.formulario.estruturaBasica.botaoSecundario.nome)
+      if(this.formulario.estruturaBasica.botaoTerciario.nome) buttons.push(this.formulario.estruturaBasica.botaoTerciario.nome)
+
+      return buttons
+
     }
 
   }
@@ -83,4 +128,13 @@ export default {
     background-color: #cfe6ff;
   }
 
+  .inlineButtons {
+    display:inline-block;
+    padding: 20px;
+  }
+
+  .centerItens {
+    display: flex;
+    justify-content: center;
+  }
 </style>

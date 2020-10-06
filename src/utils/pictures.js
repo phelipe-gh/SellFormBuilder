@@ -20,14 +20,14 @@ const pictures = [
       url: 'https://wallpapercave.com/wp/u9AVLry.jpg'
     },
     {
-      id: 4,
+      id: 5,
       nome:'Criatividade',
       url: 'https://liziamedina.com.br/wp-content/uploads/2016/06/t%C3%A9cnicas-de-estudo.jpg'
     },
     {
-      id: 5,
-      nome:'Feedback',
-      url: 'https://blog.edesk.com/resources/wp-content/uploads/2018/12/4-creative-ways-to-ultilize-negative-feedback-min.jpg'
+      id: 6,
+      nome:'Parceria',
+      url: 'https://www.moblee.com.br/blog/wp-content/uploads/sites/2/2016/04/dicas_terceirizar_eventos-1.png'
     }
   ]
 
