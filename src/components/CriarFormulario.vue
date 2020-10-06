@@ -56,7 +56,7 @@ export default {
         },
         personalizacao: {
           corLabels: '#000',
-          corPlaceholders: '#f00',
+          corPlaceHolders: '#f00',
           fontSizePrimary: 21,
           imagemFundo: null,
           corButtons: 'black',

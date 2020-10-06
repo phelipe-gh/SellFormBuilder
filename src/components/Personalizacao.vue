@@ -31,13 +31,11 @@ div
       label Cor das placeholders:
   el-row
     el-radio-group(v-model='personalizacao.corPlaceHolders')
-      el-radio(v-model='personalizacao.corPlaceHolders' label='#000') Preto
       el-radio(v-model='personalizacao.corPlaceHolders' label='#f00') Vermelho
       el-radio(v-model='personalizacao.corPlaceHolders' label='#0f0') Verde
       el-radio(v-model='personalizacao.corPlaceHolders' label='#00f') Azul
       el-radio(v-model='personalizacao.corPlaceHolders' label='#ffff00') Amarelo
       el-radio(v-model='personalizacao.corPlaceHolders' label='#993399') Roxo
-      el-radio(v-model='personalizacao.corPlaceHolders' label='#FFFFFF') Branco
   el-row
     el-col(:lg='24')
       div.showColor(v-bind:style='[btnStylesPlaceHolders]')

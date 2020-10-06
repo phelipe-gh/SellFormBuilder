@@ -1,6 +1,6 @@
 <template lang='pug'>
 .container(v-if='loaded')
-  .componentFormulario(:style='stylesForm')
+  .componentFormulario(:style='stylesForm' :class='getColorPlaceholder()')
     el-row(v-for='campo in formulario.estruturaBasica.campos') 
       |{{campo.nome}}
       el-col(:lg='24')
@@ -45,7 +45,7 @@ export default {
     return {
       telefone: null,
       imagemFundo: null,
-      loaded: false
+      loaded: false,
     }
   },
 
@@ -113,6 +113,15 @@ export default {
 
       return buttons
 
+    },
+
+
+    getColorPlaceholder() {
+      if(this.formulario.personalizacao.corPlaceHolders === '#f00') return 'el-input-red'
+      else if(this.formulario.personalizacao.corPlaceHolders === '#0f0') return 'el-input-green'
+      else if (this.formulario.personalizacao.corPlaceHolders === '#00f') return 'el-input-blue'
+      else if (this.formulario.personalizacao.corPlaceHolders === '#ffff00') return 'el-input-yellow'
+      else if (this.formulario.personalizacao.corPlaceHolders === '#993399') return 'el-input-purple'
     }
 
   }
@@ -137,4 +146,35 @@ export default {
     display: flex;
     justify-content: center;
   }
+
+  .el-input-blue {
+    ::placeholder {
+      color: #00f !important;
+    }
+  }
+
+  .el-input-red {
+    ::placeholder {
+      color: #f00 !important;
+    }
+  }
+
+  .el-input-green {
+    ::placeholder {
+      color: #0f0 !important;
+    }
+  }
+
+  .el-input-yellow {
+    ::placeholder {
+      color: yellow !important;
+    }
+  }
+
+  .el-input-purple {
+    ::placeholder {
+      color: #993399 !important;
+    }
+  }
+
 </style>
